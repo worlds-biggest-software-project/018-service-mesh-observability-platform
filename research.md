@@ -77,14 +77,44 @@
 - New Relic taken private by Francisco Partners and TPG (2024) at ~$6.5B.
 - Isovalent (Cilium/Hubble creators) acquired by Cisco (2023) for undisclosed amount; Cilium remains open source.
 
+## Recent Market Research (May 2026)
+
+### Market Size & Growth
+- **Service Mesh Market**: USD 395.4M (2024) → USD 499.59M (2025) → USD 3,601.17M (2033) at 26.4% CAGR
+- **Observability Platform Market**: USD 2.9B (2025), growing at 15.62% CAGR to USD 6.93B by 2031
+- **Combined Addressable Market**: Approximately USD 3.5B in 2026, growing robustly
+- **Key Drivers**: Microservices and Kubernetes adoption acceleration, regulatory compliance, performance optimization needs, security integration demand, multi-cluster complexity
+
+### Recent Standards & Platform Developments (2024-2026)
+- **OpenTelemetry Adoption**: OTEL now the de facto CNCF standard with stable tracing/metrics/logs APIs across all major languages
+- **W3C Trace Context Level 2**: Candidate recommendation (2025) with improved sampling consistency
+- **Istio KubeCon 2026 Announcements**: Ambient Multicluster, Gateway API Inference Extension for AI infrastructure, experimental agentgateway support
+- **eBPF-Based Observability**: Kernel-level visibility enabling ambient mesh architectures (Istio Ambient, Cilium Service Mesh)
+- **OTLP Protocol**: Now the preferred export format, replacing Zipkin B3 and Jaeger Thrift
+
+### Academic Research (2024-2025)
+- **AI-Driven Anomaly Detection in Microservices**: "The Night's Watch Algorithm" (Applied Sciences, 2024)
+- **Context-Aware Anomaly Detection with Dynamic Knowledge Graphs** (Caponetto et al., 2024)
+- **Breaking the Observability Tax**: Dynamic resolution anomaly detection via topology-aware active LLM agents
+- **Service Mesh Performance Benchmarks**: Istio +166% latency, Linkerd +33%, Cilium +99% under mTLS (2024)
+
 ## AI-Native Opportunity
 
-- **Natural language root cause analysis:** Current tools (even Dynatrace Davis AI) surface anomalies as alerts with contributing metrics but require human expertise to narrate the causal chain. An AI-native platform could generate plain-English incident summaries — "Latency on the `order-service → payment-gateway` call increased 340ms starting at 14:23 UTC, correlated with a 12% drop in connection pool availability on `payment-db`, likely triggered by the batch job deployed at 14:18 UTC" — dramatically lowering the skill barrier for incident response.
+- **Natural language root cause analysis:** Current tools (even Dynatrace Davis AI) surface anomalies as alerts with contributing metrics but require human expertise to narrate the causal chain. An AI-native platform could generate plain-English incident summaries — "Latency on the `order-service → payment-gateway` call increased 340ms starting at 14:23 UTC, correlated with a 12% drop in connection pool availability on `payment-db`, likely triggered by the batch job deployed at 14:18 UTC" — dramatically lowering the skill barrier for incident response. Recent MDPI research validates this approach.
 
-- **Topology inference without instrumentation:** Existing topology maps (Kiali, Hubble UI, Datadog Service Map) require either sidecar injection or explicit instrumentation. An AI-native platform using eBPF network flows combined with LLM-powered traffic pattern clustering could automatically infer service dependency graphs for uninstrumented legacy services, providing observability without code changes.
+- **Topology inference without instrumentation:** Existing topology maps (Kiali, Hubble UI, Datadog Service Map) require either sidecar injection or explicit instrumentation. An AI-native platform using eBPF network flows combined with LLM-powered traffic pattern clustering could automatically infer service dependency graphs for uninstrumented legacy services, providing observability without code changes. Istio's 2026 Ambient Multicluster work suggests market is moving this direction.
 
 - **Predictive SLO breach detection:** Today's AIOps tools detect anomalies reactively. A model trained on historical service behavior could predict SLO breaches 5–30 minutes before they occur based on early signals (memory growth rates, queue depths, upstream latency trends), enabling proactive mitigation — rotating pods, shedding load, or paging an on-call engineer — before end users are affected.
 
-- **Intelligent sampling with context preservation:** High-cardinality tracing at 100% sample rate is cost-prohibitive at scale. Current head-based and tail-based sampling approaches either miss rare error cases or require complex tuning. An AI-native sampler could learn which trace patterns are diagnostically novel or error-adjacent and prioritize their retention, while aggressively dropping redundant high-volume happy-path traces — reducing storage costs 70–90% without sacrificing debugging fidelity.
+- **Intelligent sampling with context preservation:** High-cardinality tracing at 100% sample rate is cost-prohibitive at scale. Current head-based and tail-based sampling approaches either miss rare error cases or require complex tuning. An AI-native sampler could learn which trace patterns are diagnostically novel or error-adjacent and prioritize their retention, while aggressively dropping redundant high-volume happy-path traces — reducing storage costs 70–90% without sacrificing debugging fidelity. W3C Trace Context Level 2 enables this.
 
-- **Cross-team service mesh governance:** In large organizations, service mesh policies (retries, timeouts, circuit breakers) are inconsistently configured across teams, creating hidden fragility. An AI-native platform could audit all mesh configurations, detect policy anti-patterns (e.g., infinite retries amplifying failures), and propose standardized baseline configurations tailored to each service's observed traffic patterns — bridging the gap between mesh capabilities and actual organizational adoption.
+- **Cross-team service mesh governance:** In large organizations, service mesh policies (retries, timeouts, circuit breakers) are inconsistently configured across teams, creating hidden fragility. An AI-native platform could audit all mesh configurations, detect policy anti-patterns (e.g., infinite retries amplifying failures), and propose standardized baseline configurations tailored to each service's observed traffic patterns — bridging the gap between mesh capabilities and actual organizational adoption. Recent benchmarks show 166% latency penalties from misconfigured Istio.
+
+- **Explainable AI for distributed system complexity**: IEEE 7000 (Ethically Aligned AI Systems) is emerging as relevant governance standard; generating interpretable, auditable explanations for autonomous observability decisions is increasingly critical for regulated industries.
+
+### New References (2025-2026)
+- [Tigera - Best Service Mesh Solutions 2025](https://www.tigera.io/learn/guides/service-mesh/service-mesh-solutions/)
+- [Cloud Native Now - Istio Weaves Future-Ready Service Mesh for AI](https://cloudnativenow.com/features/istio-weaves-future-ready-service-mesh-for-ai/)
+- [OpenTelemetry Official](https://opentelemetry.io/)
+- [AI-Driven Anomaly Detection in Cloud-Native Microservices - MDPI 2024](https://www.mdpi.com/2076-3417/15/23/12762)
+- [Breaking the Observability Tax - Dynamic Resolution Anomaly Detection](https://www.researchgate.net/publication/402763483)
